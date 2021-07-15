@@ -29,11 +29,13 @@ handleOverlayClick = (e) => {
 
 
 render() {
-    const { children } = this.props;
+    const { largeImg } = this.props;
 
     return createPortal(
       <div className={styles.Overlay} onClick={this.handleOverlayClick}>
-        <div className={styles.Modal}>{children}</div>
+        <div className={styles.Modal}>
+        <img src={largeImg} alt="#" />
+        </div>
       </div>,
       modalRoot
     );
@@ -41,7 +43,7 @@ render() {
 }
 
 Modal.propTypes = { 
-    children: PropTypes.object.isRequired,
+    largeImg: PropTypes.string.isRequired,
     onClose: PropTypes.func.isRequired
 };
 
