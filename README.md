@@ -3,7 +3,8 @@
 # Поиск изображений
 Напиши приложение поиска изображений по ключевому слову.
 
-Создай компоненты <Searchbar>, <ImageGallery>, <ImageGalleryItem>, <Loader>, <Button> и <Modal>. 
+Создай компоненты `<Searchbar>`, `<ImageGallery>`, `<ImageGalleryItem>`,
+`<Loader>`, `<Button>` и `<Modal>`.
 
 # Инструкция Pixabay API
 Для HTTP-запросов используй публичный сервис поиска изображений Pixabay. Зарегистрируйся и получи приватный ключ доступа.
