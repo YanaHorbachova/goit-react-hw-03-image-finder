@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import SearchBar from './components/Searchbar';
-// import ImageGallery from './components/ImageGallery';
-// import Button from './components/Button';
-// import Modal from './components/Modal';
-// import AppLoader from './components/Loader';
-import fetchImages from './sevices/api-service';
+import ImageGallery from './components/ImageGallery';
+import Button from './components/Button';
+import Modal from './components/Modal';
+import AppLoader from './components/Loader';
+import fetchImages from './services/api-service';
 import styles from './App.module.css';
-
 
 class App extends Component {
   state = {
@@ -23,7 +22,7 @@ class App extends Component {
     const { searchQuery } = this.state;
 
     if (prevState.searchQuery !== searchQuery) {
-      this.getImages();
+      this.fetchImages();
     }
   }
 
@@ -51,7 +50,7 @@ class App extends Component {
     });
   };
 
-  getImages = () => {
+  fetchImages = () => {
     const { currentPage, searchQuery } = this.state;
     const options = {
       searchQuery,
@@ -79,14 +78,15 @@ class App extends Component {
 
   render() {
     const { images, showModal, isLoading, largeImg } = this.state;
+    const { onOpenModal, onCloseModal, onChangeQuery, fetchImages } = this;
 
     return (
       <div className={styles.App}>
-        <SearchBar onSubmit={this.onChangeQuery} />
-        {/* {!isLoading && <ImageGallery onClick={this.onOpenModal} images={images} />}
-        {images.length > 0 && !isLoading && <Button onClick={this.getImages} />}
+        <SearchBar onSubmit={onChangeQuery} />
+        {!isLoading && <ImageGallery onClick={onOpenModal} images={images} />}
+        {images.length > 0 && !isLoading && <Button onClick={fetchImages} />}
         {isLoading && <AppLoader />}
-        {showModal && <Modal onClose={this.onCloseModal} largeImg={largeImg} />} */}
+        {showModal && <Modal onClose={onCloseModal} largeImg={largeImg} />}
       </div>
     );
   }
